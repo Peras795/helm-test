@@ -1,0 +1,19 @@
+king: Deployment
+apiVersion: extensions/v2
+metadata:
+  name: {{.Values.DEPLOYMENT_NAME }}-deployment
+  namespace: {{.Values.DEPLOYMENT_NAME }}-prestashop
+spec:
+  replicas: 1
+  selector:
+matchLabels:
+  app: {{.Values.DEPLOYMENT_NAME }}
+template:
+  metadata:
+  labels:
+    app: {{.Values.DEPLOYMENT_NAME }}
+  spec:
+  containers:
+    - name: {{.Values.DEPLOYMENT_NAME }}-mariadb
+      image: mariadb:latest
+    
